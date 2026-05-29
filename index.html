@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Tools — Ear Training, Sight Reading & Theory</title>
+    <meta
+      name="description"
+      content="A small suite of free, browser-based tools for musicians: ear training, sight-reading practice, and a player for classic music-theory and orchestration textbooks."
+    />
+    <link rel="canonical" href="https://e7mac.github.io/" />
+    <meta name="theme-color" content="#fcf9ee" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Music Tools — Ear Training, Sight Reading & Theory" />
+    <meta property="og:description" content="Free, browser-based tools for musicians: ear training, sight reading, and classic theory & orchestration textbook examples." />
+    <meta property="og:url" content="https://e7mac.github.io/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #fcf9ee; --surface: #fff; --ink: #1a1a1a;
+        --muted: rgba(26, 26, 26, 0.55); --faint: rgba(26, 26, 26, 0.08);
+        --clay: #d97757; --clay-soft: rgba(217, 119, 87, 0.18);
+        --shadow: 0 1px 2px rgba(26,26,26,.04), 0 1px 3px rgba(26,26,26,.06);
+        --serif: ui-serif, "New York", Charter, Georgia, serif;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; background: var(--bg); color: var(--ink);
+        font-family: "Inter", -apple-system, system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh; display: flex; align-items: center; justify-content: center;
+        padding: 2rem 1rem;
+      }
+      main { max-width: 640px; width: 100%; }
+      .brand { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; }
+      .mark {
+        width: 38px; height: 38px; border-radius: 9px; background: var(--clay); color: #fff;
+        display: grid; place-items: center; font-size: 1.2rem;
+        box-shadow: 0 1px 2px rgba(26,26,26,.14);
+      }
+      h1 { font-family: var(--serif); font-size: 2rem; letter-spacing: -0.02em; margin: 0 0 0.5rem; }
+      .lede { color: var(--muted); line-height: 1.6; margin: 0 0 2rem; max-width: 52ch; }
+      .apps { display: grid; gap: 0.9rem; }
+      .app {
+        display: block; text-decoration: none; color: inherit;
+        background: var(--surface); border: 1px solid var(--faint); border-radius: 12px;
+        padding: 1.1rem 1.25rem; box-shadow: var(--shadow);
+        transition: border-color .15s ease, transform .12s ease;
+      }
+      .app:hover { border-color: var(--clay-soft); transform: translateY(-1px); }
+      .app h2 { font-family: var(--serif); font-size: 1.15rem; margin: 0 0 0.25rem; }
+      .app p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+      .app .host { color: var(--clay); font-weight: 600; font-size: 0.82rem; margin-top: 0.5rem; display: inline-block; }
+      footer { margin-top: 2rem; color: var(--muted); font-size: 0.8rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand"><span class="mark" aria-hidden="true">♪</span></div>
+      <h1>Music tools</h1>
+      <p class="lede">
+        A small suite of free, browser-based tools for musicians — built to make
+        practising and studying music a little easier.
+      </p>
+
+      <div class="apps">
+        <a class="app" href="https://realeartrainer.com">
+          <h2>Real Ear Trainer</h2>
+          <p>Train your ear — recognise intervals, chords, and progressions by sound.</p>
+          <span class="host">realeartrainer.com</span>
+        </a>
+        <a class="app" href="https://realsightreader.com">
+          <h2>Real Sight Reader</h2>
+          <p>Sight-reading practice and drills built from your own repertoire.</p>
+          <span class="host">realsightreader.com</span>
+        </a>
+        <a class="app" href="https://e7mac.github.io/music-ed-companion/">
+          <h2>Music Ed</h2>
+          <p>Hear the musical examples from classic theory and orchestration textbooks, beside the score.</p>
+          <span class="host">e7mac.github.io/music-ed-companion</span>
+        </a>
+      </div>
+
+      <footer>Made by e7mac.</footer>
+    </main>
+  </body>
+</html>
