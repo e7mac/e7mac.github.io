@@ -16,89 +16,85 @@ Three overlapping web presences exist for the same person:
 
 ## Decisions (from brainstorming)
 
-- **Purpose:** Personal homepage *plus* the music-tools hub.
-- **Content:** Short bio/about · music tools hub · music/recordings · digital & visual art · publications · software/projects · links/social/contact.
-- **Structure:** Hub landing page + a few richer subpages.
+- **Purpose:** Personal homepage with the **music-tools hub as the highlight**.
+- **Structure:** **Single scrolling page, no subpages.**
+- **Content (one page, in order):** about/bio → **music tools (highlighted)** → software/apps list → publications list → links/social.
+- **Art & music are links, not galleries:** digital/visual art → **Instagram**; music/compositions/performances → **SoundCloud**. No image export or media hosting needed.
 - **Domains:** Both `e7mac.com` and `mayanks.art` serve the same site, **no redirect** (both canonical).
 - **Hosting:** **Cloudflare Pages**, deployed from the `e7mac.github.io` GitHub repo, with both custom domains attached.
-- **Build tooling:** **Plain HTML + a single shared CSS file.** No framework, no build step. Header/footer markup duplicated per page.
+- **Build tooling:** **Plain HTML + CSS.** No framework, no build step. (Single page → CSS stays inline in `index.html`, as it is today.)
+- **GitHub Pages:** **disabled** once Cloudflare Pages is live.
 
 ## Architecture
 
-Static files served directly by Cloudflare Pages. No server, no database, no build.
+A single static HTML page served directly by Cloudflare Pages. No server, no database, no build, no subpages.
 
 ```
-e7mac.github.io/            (repo root = Pages output dir)
-├── index.html              # Hub: about + tools + highlights + links
-├── music/index.html        # Compositions, performances, recordings (embeds/links)
-├── art/index.html          # Digital art + visual art galleries
-├── software/index.html     # Apps & projects (bent.fm, GrainProc, tools, …)
-├── publications/index.html # List of publications
-├── assets/
-│   ├── style.css           # Single shared stylesheet (extracted from current index.html)
-│   └── img/                # Art images + thumbnails (from Squarespace export)
-├── favicon.svg             # Existing
-├── robots.txt              # Existing (update for new pages)
-└── sitemap.xml             # Existing (regenerate for all pages)
+e7mac.github.io/        (repo root = Pages output dir)
+├── index.html          # The entire site: about + tools + software + publications + links
+├── 404.html            # Simple not-found page
+├── _redirects          # Legacy path redirects (old Django URLs → /)
+├── favicon.svg         # Existing
+├── robots.txt          # Existing
+└── sitemap.xml         # Existing (single URL)
 ```
 
-Each page is a complete HTML document that links `assets/style.css` and repeats a shared header (brand + nav) and footer. Clean URLs via directory `index.html` files (`/music`, `/art`, …).
+`index.html` evolves directly from the current file: same cream/clay theme, inline CSS (acceptable for one page), Inter + serif type. Content is organized into stacked `<section>`s with anchor links.
 
-### Components (each independently understandable)
+### Sections (within the single page)
 
-- **Shared stylesheet (`assets/style.css`):** the design tokens + component styles currently inlined in `index.html`, lifted into one file. Single source of truth for theme (cream `--bg`, clay `--clay`, Inter + serif). Pages depend on it; changing it restyles the whole site without touching page markup.
-- **Header/nav partial (copied markup):** brand mark + links to the 5 pages. Duplicated by hand (acceptable at this scale). If it ever drifts painfully, that is the signal to revisit Eleventy.
-- **Hub page (`index.html`):** about blurb, the existing 3 tool cards, highlight links into subpages, social links. Evolution of the current file.
-- **Subpage = section:** `/music`, `/art`, `/software`, `/publications` each own one content domain, reuse header/footer/CSS, and embed or link external media (SoundCloud, video, app stores/sites). No shared state between pages.
+Each section is a self-contained block of static markup; reordering or editing one does not affect the others.
+
+- **About:** short bio blending both identities — engineer & computer musician (CCRMA/Stanford) + "music, art & technology," SF-based. Fresh copy, not the 2012 text.
+- **Music tools (highlight):** the existing three cards — Real Ear Trainer, Real Sight Reader, Music Ed — carried over verbatim, given visual prominence as the centerpiece.
+- **Software / projects:** a card or list of apps — bent.fm, GrainProc, PianoCam, Practica, Stave, etc. — each linking to its site/store. Sourced from current projects + old e7mac.com "Projects."
+- **Publications:** a simple static list with links to papers (from both old portfolios).
+- **Links / social:** Instagram (art), SoundCloud (music), GitHub, email. These carry the art/music content by reference rather than rehosting it.
 
 ## Content sources & data flow
 
-| Page | Primary source | Notes |
+| Section | Source | Notes |
 |---|---|---|
-| About (hub) | Fresh copy blending both bios | Engineer + computer musician + artist, SF |
-| Music tools (hub) | Existing `index.html` cards | Already built — carry over verbatim |
-| `/music` | Old e7mac.com + mayanks.art | SoundCloud / video embeds + links |
-| `/art` | mayanks.art (Squarespace) | **Needs image export — user action** |
-| `/software` | Apps + tools + old Projects | bent.fm, GrainProc, RealEarTrainer, etc. |
-| `/publications` | Both portfolios | Static list, links to papers |
+| About | Fresh copy blending both bios | Engineer + computer musician + artist, SF |
+| Music tools | Existing `index.html` cards | Carry over verbatim |
+| Software/projects | Current apps + old e7mac.com Projects | Link out to each |
+| Publications | Both old portfolios | Static list of links |
 | Links/social | mayanks.art + e7mac.com | Instagram, SoundCloud, GitHub, email |
 
-**Content recovery status:**
-- Text/structure: recovered (Wayback + live old site). ✅
-- Art images: **pending** — user to export from Squarespace (Settings → Advanced → Import/Export → Export WordPress XML) and/or download originals from the media library. Until then, `/art` ships with placeholders or is omitted from nav.
+All content is recoverable for free (Wayback + live old site + known app URLs). **No Squarespace export required** — art and music live behind Instagram/SoundCloud links.
 
 ## Deployment & cutover
 
-1. Build the static site in the `e7mac.github.io` repo on a branch; PR/merge to `main`.
-2. Create a **Cloudflare Pages** project connected to the GitHub repo (production branch `main`, no build command, output dir = root). GitHub Pages can remain as a free staging mirror or be turned off.
+1. Build the single page in the `e7mac.github.io` repo on a branch; PR/merge to `main`.
+2. Create a **Cloudflare Pages** project connected to the GitHub repo (production branch `main`, **no build command**, output dir = root).
 3. Attach **both** custom domains in Pages: `e7mac.com` (+ `www`) and `mayanks.art` (+ `www`). Cloudflare provisions TLS automatically.
-4. Update Cloudflare DNS: point both apex + www records at the Pages project (CNAME/ALIAS to `*.pages.dev`). This replaces the current `e7mac.com → herokudns.com` ALIAS (the source of the 525: Cloudflare → Heroku origin had no cert).
-5. Verify both domains serve the new site over HTTPS (200, valid cert, all pages reachable).
-6. **Retire:** `heroku ps:scale web=0 -a e7mac` then delete the app; cancel/let-lapse Squarespace.
+4. Update Cloudflare DNS: point both apex + `www` records at the Pages project. This replaces the current `e7mac.com → herokudns.com` ALIAS (the source of the 525: Cloudflare → Heroku origin had no cert).
+5. Verify both domains serve the new site over HTTPS (200, valid cert).
+6. **Retire:** `heroku ps:scale web=0 -a e7mac` then delete the app; cancel/let-lapse Squarespace; **disable GitHub Pages** for the repo.
 
 ## Error handling / edge cases
 
-- **404:** add `404.html`; Cloudflare Pages serves it automatically.
-- **Old inbound links** (e.g. `/projects/`, `/compositions/` from the Django site): add a `_redirects` file mapping legacy paths to the new pages so existing links/SEO don't break.
-- **Missing art images:** `/art` degrades to placeholders or is hidden from nav until images land — never ships broken image tags.
+- **404:** `404.html`; Cloudflare Pages serves it automatically.
+- **Old inbound links** (e.g. `/projects/`, `/compositions/`, `/performances/` from the Django site): `_redirects` maps legacy paths → `/` (or the relevant anchor) so existing links/SEO don't break.
+- **External link rot:** Instagram/SoundCloud/app links open in context; no broken local assets since nothing is rehosted.
 - **TLS:** handled entirely by Cloudflare Pages (no more manual Heroku certs).
 
 ## Testing / verification
 
-- Local: open each page in a browser; check nav, responsive layout, no broken links/images (`<a>`/`<img>` audit).
+- Local: open `index.html`; check every section renders, nav anchors jump correctly, responsive layout, no broken links (`<a>` audit), no broken images.
 - Pre-cutover: preview via the `*.pages.dev` URL.
-- Post-cutover: `curl -I` both apex domains + `www` → expect `200`, valid cert; spot-check every page and the `_redirects` legacy paths.
-- Lighthouse pass on the hub page (perf/SEO/a11y) as a sanity check.
+- Post-cutover: `curl -I` both apex domains + `www` → expect `200`, valid cert; click through all external links; verify `_redirects` legacy paths land sensibly.
+- Lighthouse pass on the page (perf/SEO/a11y) as a sanity check.
 
 ## Out of scope (YAGNI)
 
-- Static-site generator / framework / build pipeline (revisit only if hand-maintained nav becomes painful).
+- Subpages, static-site generator, framework, or build pipeline (revisit only if the single page outgrows itself).
+- Rehosting art images or audio — linked via Instagram/SoundCloud instead.
 - Blog/CMS, comments, analytics dashboards.
-- Recreating the old Django dynamic features (experiments app, etc.) — link to live apps instead.
-- Pixel-perfect recreation of the Squarespace design — adopt the existing clean cream/clay system instead.
+- Recreating old Django dynamic features — link to live apps instead.
+- Pixel-perfect recreation of the Squarespace design — adopt the existing cream/clay system.
 
 ## Open items before/while implementing
 
-- [ ] User exports art images from Squarespace (gates the `/art` gallery).
-- [ ] Confirm exact external links (SoundCloud, Instagram, paper URLs, app URLs).
-- [ ] Decide whether GitHub Pages stays on as a mirror or is disabled after Cloudflare Pages goes live.
+- [ ] Confirm exact external URLs: Instagram handle, SoundCloud profile, app/project links, publication links, contact email.
+- [ ] Final about-section copy.
