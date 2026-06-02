@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Music Tools — Ear Training, Sight Reading & Theory</title>
+    <title>Mayank Sanganeria — engineer &amp; computer musician</title>
     <meta
       name="description"
-      content="A small suite of free, browser-based tools for musicians: ear training, sight-reading practice, and a player for classic music-theory and orchestration textbooks."
+      content="Mayank Sanganeria (e7mac) — engineer and computer musician. Music software, music, and art. Free browser tools: ear training, sight reading, and music theory."
     />
     <link rel="canonical" href="https://e7mac.github.io/" />
     <meta name="theme-color" content="#fcf9ee" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Music Tools — Ear Training, Sight Reading & Theory" />
-    <meta property="og:description" content="Free, browser-based tools for musicians: ear training, sight reading, and classic theory & orchestration textbook examples." />
+    <meta property="og:title" content="Mayank Sanganeria — engineer &amp; computer musician" />
+    <meta property="og:description" content="Music software, music, and art. Plus free browser tools for musicians." />
     <meta property="og:url" content="https://e7mac.github.io/" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,22 +32,39 @@
         --serif: ui-serif, "New York", Charter, Georgia, serif;
       }
       * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0; background: var(--bg); color: var(--ink);
         font-family: "Inter", -apple-system, system-ui, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        min-height: 100vh; display: flex; align-items: center; justify-content: center;
-        padding: 2rem 1rem;
+        -webkit-font-smoothing: antialiased; line-height: 1.6;
       }
-      main { max-width: 640px; width: 100%; }
-      .brand { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; }
+      nav.top {
+        position: sticky; top: 0; z-index: 10;
+        background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--faint);
+        display: flex; gap: 1rem; align-items: center;
+        padding: 0.7rem 1.25rem; font-size: 0.9rem;
+      }
+      nav.top a { color: var(--muted); text-decoration: none; }
+      nav.top a:hover { color: var(--clay); }
+      nav.top .spacer { flex: 1; }
+      main { max-width: 680px; width: 100%; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+      section { margin: 0 0 3rem; scroll-margin-top: 4rem; }
+      section > h2.sec {
+        font-family: var(--serif); font-size: 1.5rem; letter-spacing: -0.01em;
+        margin: 0 0 1rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--faint);
+      }
+      .brand { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem; }
       .mark {
         width: 38px; height: 38px; border-radius: 9px; background: var(--clay); color: #fff;
         display: grid; place-items: center; font-size: 1.2rem;
         box-shadow: 0 1px 2px rgba(26,26,26,.14);
       }
       h1 { font-family: var(--serif); font-size: 2rem; letter-spacing: -0.02em; margin: 0 0 0.5rem; }
-      .lede { color: var(--muted); line-height: 1.6; margin: 0 0 2rem; max-width: 52ch; }
+      .lede { color: var(--muted); line-height: 1.6; margin: 0 0 2rem; max-width: 56ch; }
+      .lede a { color: var(--clay); text-decoration: none; }
+      .lede a:hover { text-decoration: underline; }
       .apps { display: grid; gap: 0.9rem; }
       .app {
         display: block; text-decoration: none; color: inherit;
@@ -59,35 +76,121 @@
       .app h2 { font-family: var(--serif); font-size: 1.15rem; margin: 0 0 0.25rem; }
       .app p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
       .app .host { color: var(--clay); font-weight: 600; font-size: 0.82rem; margin-top: 0.5rem; display: inline-block; }
+      .linkrow { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+      .linkrow a {
+        text-decoration: none; color: var(--ink);
+        border: 1px solid var(--faint); border-radius: 999px;
+        padding: 0.45rem 0.95rem; font-size: 0.9rem; font-weight: 500;
+        transition: border-color .15s ease, color .15s ease;
+      }
+      .linkrow a:hover { border-color: var(--clay-soft); color: var(--clay); }
+      ul.pubs { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.8rem; }
+      ul.pubs li { color: var(--muted); }
+      ul.pubs li strong { color: var(--ink); font-weight: 600; }
       footer { margin-top: 2rem; color: var(--muted); font-size: 0.8rem; }
     </style>
   </head>
   <body>
-    <main>
-      <div class="brand"><span class="mark" aria-hidden="true">♪</span></div>
-      <h1>Music tools</h1>
-      <p class="lede">
-        A small suite of free, browser-based tools for musicians — built to make
-        practising and studying music a little easier.
-      </p>
+    <nav class="top">
+      <span class="mark" aria-hidden="true" style="width:28px;height:28px;font-size:0.95rem;border-radius:7px">♪</span>
+      <a href="#about">About</a>
+      <a href="#tools">Tools</a>
+      <a href="#software">Software</a>
+      <a href="#publications">Publications</a>
+      <span class="spacer"></span>
+      <a href="#links">Links</a>
+    </nav>
 
-      <div class="apps">
-        <a class="app" href="https://realeartrainer.com">
-          <h2>Real Ear Trainer</h2>
-          <p>Train your ear — recognise intervals, chords, and progressions by sound.</p>
-          <span class="host">realeartrainer.com</span>
-        </a>
-        <a class="app" href="https://realsightreader.com">
-          <h2>Real Sight Reader</h2>
-          <p>Sight-reading practice and drills built from your own repertoire.</p>
-          <span class="host">realsightreader.com</span>
-        </a>
-        <a class="app" href="https://textbook.realmusictheory.com/">
-          <h2>Music Ed</h2>
-          <p>Hear the musical examples from classic theory and orchestration textbooks, beside the score.</p>
-          <span class="host">textbook.realmusictheory.com</span>
-        </a>
-      </div>
+    <main>
+      <section id="about">
+        <div class="brand"><span class="mark" aria-hidden="true">♪</span></div>
+        <h1>Mayank Sanganeria</h1>
+        <p class="lede">
+          I'm an engineer and computer musician. I build music software, and I make
+          music, art, and the occasional research paper. I studied at
+          <a href="https://ccrma.stanford.edu">CCRMA, Stanford</a>, and I'm based in
+          San Francisco. Say hello if you'd like to collaborate.
+        </p>
+      </section>
+
+      <section id="tools">
+        <h2 class="sec">Music tools</h2>
+        <p class="lede" style="margin-bottom:1.5rem">
+          Free, browser-based tools for musicians — built to make practising and
+          studying music a little easier.
+        </p>
+        <div class="apps">
+          <a class="app" href="https://realeartrainer.com">
+            <h2>Real Ear Trainer</h2>
+            <p>Train your ear — recognise intervals, chords, and progressions by sound.</p>
+            <span class="host">realeartrainer.com</span>
+          </a>
+          <a class="app" href="https://realsightreader.com">
+            <h2>Real Sight Reader</h2>
+            <p>Sight-reading practice and drills built from your own repertoire.</p>
+            <span class="host">realsightreader.com</span>
+          </a>
+          <a class="app" href="https://textbook.realmusictheory.com/">
+            <h2>Music Ed</h2>
+            <p>Hear the musical examples from classic theory and orchestration textbooks, beside the score.</p>
+            <span class="host">textbook.realmusictheory.com</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="software">
+        <h2 class="sec">Software</h2>
+        <p class="lede" style="margin-bottom:1.5rem">
+          Apps and instruments I build for musicians.
+        </p>
+        <div class="apps">
+          <a class="app" href="https://apps.apple.com/us/developer/mayank-sanganeria/id527550366">
+            <h2>bent.fm</h2>
+            <p>A circuit-bent FM synthesiser for iPad — chaotic, playable, AUv3.</p>
+            <span class="host">App Store</span>
+          </a>
+          <a class="app" href="https://grainproc.com">
+            <h2>GrainProc</h2>
+            <p>Live granular processor — mic input through a granular delay/feedback engine.</p>
+            <span class="host">grainproc.com</span>
+          </a>
+          <a class="app" href="https://apps.apple.com/us/developer/mayank-sanganeria/id527550366">
+            <h2>PianoCam</h2>
+            <p>Virtual webcam with an 88-key piano overlay driven by MIDI — for teaching on Zoom/Meet.</p>
+            <span class="host">App Store</span>
+          </a>
+          <a class="app" href="https://apps.apple.com/us/developer/mayank-sanganeria/id527550366">
+            <h2>Practica</h2>
+            <p>Practice journal — records playing, segments into takes, clusters them by piece.</p>
+            <span class="host">App Store</span>
+          </a>
+          <a class="app" href="https://apps.apple.com/us/developer/mayank-sanganeria/id527550366">
+            <h2>Stave</h2>
+            <p>Music-literacy trainer — drills notes, intervals, harmony and rhythm from your own scores.</p>
+            <span class="host">App Store</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="publications">
+        <h2 class="sec">Publications</h2>
+        <ul class="pubs">
+          <li><strong>Bit Bending — an introduction.</strong> Circuit bending, brought to software.</li>
+          <li><strong>GrainProc.</strong> A real-time granular synthesis interface for live performance.</li>
+        </ul>
+      </section>
+
+      <section id="links">
+        <h2 class="sec">Elsewhere</h2>
+        <p class="lede" style="margin-bottom:1.25rem">
+          My art lives on Instagram and my music on SoundCloud.
+        </p>
+        <div class="linkrow">
+          <a href="https://www.instagram.com/e7mac/">Instagram — art</a>
+          <a href="https://soundcloud.com/e7mac">SoundCloud — music</a>
+          <a href="https://github.com/e7mac">GitHub</a>
+        </div>
+      </section>
 
       <footer>Made by e7mac.</footer>
     </main>
