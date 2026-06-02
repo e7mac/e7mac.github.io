@@ -69,6 +69,8 @@ All content is recoverable for free (Wayback + live old site + known app URLs). 
 2. Create a **Cloudflare Pages** project connected to the GitHub repo (production branch `main`, **no build command**, output dir = root).
 3. Attach **both** custom domains in Pages: `e7mac.com` (+ `www`) and `mayanks.art` (+ `www`). Cloudflare provisions TLS automatically.
 4. Update Cloudflare DNS: point both apex + `www` records at the Pages project. This replaces the current `e7mac.com → herokudns.com` ALIAS (the source of the 525: Cloudflare → Heroku origin had no cert).
+   - **`e7mac.com`** is already a Cloudflare zone — just repoint its records.
+   - **`mayanks.art`** is registered at **GoDaddy** (not Squarespace; Squarespace was only the website builder) and currently uses GoDaddy nameservers. **No domain transfer needed** — add `mayanks.art` as a Cloudflare zone and switch its nameservers to Cloudflare at GoDaddy. (Cloudflare Registrar does **not** support `.art`, so transferring registration to Cloudflare is not an option; a later transfer, if ever wanted, would go to Porkbun/Namecheap. Out of scope here.) Domain is paid through 2026-11-04; the expired Squarespace plan does not affect it.
 5. Verify both domains serve the new site over HTTPS (200, valid cert).
 6. **Retire:** `heroku ps:scale web=0 -a e7mac` then delete the app; cancel/let-lapse Squarespace; **disable GitHub Pages** for the repo.
 
