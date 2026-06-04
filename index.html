@@ -6,16 +6,16 @@
     <title>Mayank Sanganeria — engineer &amp; computer musician</title>
     <meta
       name="description"
-      content="Mayank Sanganeria (e7mac) — engineer and computer musician. Music software, music, and art. Free browser tools: ear training, sight reading, and music theory."
+      content="Mayank Sanganeria (e7mac) — engineer and computer musician. Music software, apps, and free browser tools for musicians: ear training, sight reading, and music theory."
     />
-    <link rel="canonical" href="https://e7mac.github.io/" />
+    <link rel="canonical" href="https://e7mac.com/" />
     <meta name="theme-color" content="#fcf9ee" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Mayank Sanganeria — engineer &amp; computer musician" />
-    <meta property="og:description" content="Music software, music, and art. Plus free browser tools for musicians." />
-    <meta property="og:url" content="https://e7mac.github.io/" />
+    <meta property="og:description" content="Music software, apps, and free browser tools for musicians." />
+    <meta property="og:url" content="https://e7mac.com/" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,6 +38,7 @@
         font-family: "Inter", -apple-system, system-ui, sans-serif;
         -webkit-font-smoothing: antialiased; line-height: 1.6;
       }
+      img { display: block; max-width: 100%; }
       nav.top {
         position: sticky; top: 0; z-index: 10;
         background: color-mix(in srgb, var(--bg) 88%, transparent);
@@ -49,36 +50,53 @@
       nav.top a { color: var(--muted); text-decoration: none; }
       nav.top a:hover { color: var(--clay); }
       nav.top .spacer { flex: 1; }
-      main { max-width: 680px; width: 100%; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+      main { max-width: 760px; width: 100%; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
       section { margin: 0 0 3rem; scroll-margin-top: 4rem; }
       section > h2.sec {
         font-family: var(--serif); font-size: 1.5rem; letter-spacing: -0.01em;
-        margin: 0 0 1rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--faint);
+        margin: 0 0 0.4rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--faint);
       }
-      .brand { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem; }
+      .sublede { color: var(--muted); margin: 0 0 1.5rem; font-size: 0.95rem; }
       .mark {
         width: 38px; height: 38px; border-radius: 9px; background: var(--clay); color: #fff;
         display: grid; place-items: center; font-size: 1.2rem;
         box-shadow: 0 1px 2px rgba(26,26,26,.14);
       }
+      .brand { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem; }
       h1 { font-family: var(--serif); font-size: 2rem; letter-spacing: -0.02em; margin: 0 0 0.5rem; }
-      .lede { color: var(--muted); line-height: 1.6; margin: 0 0 2rem; max-width: 56ch; }
+      .lede { color: var(--muted); line-height: 1.6; margin: 0 0 0.5rem; max-width: 56ch; }
       .lede a { color: var(--clay); text-decoration: none; }
       .lede a:hover { text-decoration: underline; }
-      .apps { display: grid; gap: 0.9rem; }
-      .app {
-        display: block; text-decoration: none; color: inherit;
-        background: var(--surface); border: 1px solid var(--faint); border-radius: 12px;
-        padding: 1.1rem 1.25rem; box-shadow: var(--shadow);
-        transition: border-color .15s ease, transform .12s ease;
+
+      /* gallery cards (icon + screengrab) */
+      .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+      .card {
+        display: block; text-decoration: none; color: inherit; overflow: hidden;
+        background: var(--surface); border: 1px solid var(--faint); border-radius: 14px;
+        box-shadow: var(--shadow); transition: border-color .15s ease, transform .12s ease;
       }
-      .app:hover { border-color: var(--clay-soft); transform: translateY(-1px); }
-      .app h2 { font-family: var(--serif); font-size: 1.15rem; margin: 0 0 0.25rem; }
-      .app p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
-      .app .host { color: var(--clay); font-weight: 600; font-size: 0.82rem; margin-top: 0.5rem; display: inline-block; }
-      .app.soon { cursor: default; }
-      .app.soon:hover { border-color: var(--faint); transform: none; }
-      .app.soon .host { color: var(--muted); }
+      .card:hover { border-color: var(--clay-soft); transform: translateY(-2px); }
+      .card .banner {
+        width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center;
+        background: var(--bg); border-bottom: 1px solid var(--faint);
+      }
+      .card .body { display: flex; gap: 0.8rem; align-items: flex-start; padding: 1rem 1.1rem; }
+      .card .ic { width: 44px; height: 44px; border-radius: 10px; flex: none; box-shadow: 0 1px 2px rgba(26,26,26,.12); }
+      .card h3 { font-family: var(--serif); font-size: 1.1rem; margin: 0 0 0.2rem; }
+      .card p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
+      .card .host { color: var(--clay); font-weight: 600; font-size: 0.8rem; margin-top: 0.5rem; display: inline-block; }
+
+      /* coming-soon minis (icon + name) */
+      h3.subhead { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 1.6rem 0 0.8rem; font-weight: 600; }
+      .minis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .mini { display: flex; align-items: center; gap: 0.7rem; background: var(--surface); border: 1px solid var(--faint); border-radius: 12px; padding: 0.8rem 0.9rem; opacity: 0.78; }
+      .mini .ic { width: 38px; height: 38px; border-radius: 9px; flex: none; }
+      .mini h4 { margin: 0; font-family: var(--serif); font-size: 1rem; }
+      .mini .soon { margin-left: auto; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--faint); border-radius: 999px; padding: 0.2rem 0.55rem; white-space: nowrap; }
+
+      ul.pubs { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.8rem; }
+      ul.pubs li { color: var(--muted); }
+      ul.pubs li strong { color: var(--ink); font-weight: 600; }
       .linkrow { display: flex; flex-wrap: wrap; gap: 0.6rem; }
       .linkrow a {
         text-decoration: none; color: var(--ink);
@@ -87,10 +105,9 @@
         transition: border-color .15s ease, color .15s ease;
       }
       .linkrow a:hover { border-color: var(--clay-soft); color: var(--clay); }
-      ul.pubs { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.8rem; }
-      ul.pubs li { color: var(--muted); }
-      ul.pubs li strong { color: var(--ink); font-weight: 600; }
       footer { margin-top: 2rem; color: var(--muted); font-size: 0.8rem; }
+      footer a { color: var(--muted); }
+      @media (max-width: 560px) { .gallery, .minis { grid-template-columns: 1fr; } }
     </style>
   </head>
   <body>
@@ -118,70 +135,89 @@
 
       <section id="tools">
         <h2 class="sec">Music tools</h2>
-        <p class="lede" style="margin-bottom:1.5rem">
-          Free, browser-based tools for musicians — built to make practising and
-          studying music a little easier.
-        </p>
-        <div class="apps">
-          <a class="app" href="https://realeartrainer.com">
-            <h2>Real Ear Trainer</h2>
-            <p>Train your ear — recognise intervals, chords, and progressions by sound.</p>
-            <span class="host">realeartrainer.com</span>
+        <p class="sublede">Free, browser-based tools — to make practising and studying music a little easier.</p>
+        <div class="gallery">
+          <a class="card" href="https://realeartrainer.com">
+            <img class="banner" src="./assets/shot-ret.png" alt="Real Ear Trainer screenshot" loading="lazy" />
+            <div class="body">
+              <img class="ic" src="./assets/ic-ret.png" alt="" />
+              <div>
+                <h3>Real Ear Trainer</h3>
+                <p>Train your ear — recognise intervals, chords, and progressions by sound.</p>
+                <span class="host">realeartrainer.com</span>
+              </div>
+            </div>
           </a>
-          <a class="app" href="https://realsightreader.com">
-            <h2>Real Sight Reader</h2>
-            <p>Sight-reading practice and drills built from your own repertoire.</p>
-            <span class="host">realsightreader.com</span>
+          <a class="card" href="https://realsightreader.com">
+            <img class="banner" src="./assets/shot-rsr.png" alt="Real Sight Reader screenshot" loading="lazy" />
+            <div class="body">
+              <img class="ic" src="./assets/ic-rsr.png" alt="" />
+              <div>
+                <h3>Real Sight Reader</h3>
+                <p>Sight-reading practice and drills, built from your own repertoire.</p>
+                <span class="host">realsightreader.com</span>
+              </div>
+            </div>
           </a>
-          <a class="app" href="https://textbook.realmusictheory.com/">
-            <h2>Music Ed</h2>
-            <p>Hear the musical examples from classic theory and orchestration textbooks, beside the score.</p>
-            <span class="host">textbook.realmusictheory.com</span>
+          <a class="card" href="https://textbook.realmusictheory.com/">
+            <img class="banner" src="./assets/shot-musiced.png" alt="Music Ed screenshot" loading="lazy" />
+            <div class="body">
+              <img class="ic" src="./assets/ic-musiced.svg" alt="" />
+              <div>
+                <h3>Music Ed</h3>
+                <p>Hear the examples from classic theory and orchestration textbooks, beside the score.</p>
+                <span class="host">textbook.realmusictheory.com</span>
+              </div>
+            </div>
           </a>
-          <a class="app" href="https://whozart.com">
-            <h2>Whozart</h2>
-            <p>A daily listening quiz — hear a piece, name it, and share your score.</p>
-            <span class="host">whozart.com</span>
+          <a class="card" href="https://whozart.com">
+            <img class="banner" src="./assets/shot-whozart.png" alt="Whozart screenshot" loading="lazy" />
+            <div class="body">
+              <img class="ic" src="./assets/ic-whozart.png" alt="" />
+              <div>
+                <h3>Whozart</h3>
+                <p>A daily listening quiz — hear a piece, name it, and share your score.</p>
+                <span class="host">whozart.com</span>
+              </div>
+            </div>
           </a>
         </div>
       </section>
 
       <section id="software">
         <h2 class="sec">Software</h2>
-        <p class="lede" style="margin-bottom:1.5rem">
-          Apps and instruments I build for musicians.
-        </p>
-        <div class="apps">
-          <div class="app soon">
-            <h2>bent.fm</h2>
-            <p>A circuit-bent FM synthesiser for iPad — chaotic, playable, AUv3.</p>
-            <span class="host">Coming soon</span>
-          </div>
-          <a class="app" href="https://grainproc.com">
-            <h2>GrainProc</h2>
-            <p>Live granular processor — mic input through a granular delay/feedback engine.</p>
-            <span class="host">grainproc.com</span>
+        <p class="sublede">Apps and instruments I build for musicians.</p>
+        <div class="gallery">
+          <a class="card" href="https://grainproc.com">
+            <img class="banner" src="./assets/shot-grainproc.png" alt="GrainProc screenshot" loading="lazy" />
+            <div class="body">
+              <img class="ic" src="./assets/ic-grainproc.png" alt="" />
+              <div>
+                <h3>GrainProc</h3>
+                <p>Live granular processor — mic input through a granular delay/feedback engine.</p>
+                <span class="host">grainproc.com</span>
+              </div>
+            </div>
           </a>
-          <a class="app" href="https://midimemos.com">
-            <h2>MIDI Memos</h2>
-            <p>One-tap MIDI recorder — capture an idea, play it back, export the .mid to any DAW.</p>
-            <span class="host">midimemos.com</span>
+          <a class="card" href="https://midimemos.com">
+            <img class="banner" src="./assets/shot-midimemos.png" alt="MIDI Memos screenshot" loading="lazy" />
+            <div class="body">
+              <img class="ic" src="./assets/ic-midimemos.png" alt="" />
+              <div>
+                <h3>MIDI Memos</h3>
+                <p>One-tap MIDI recorder — capture an idea, play it back, export the .mid to any DAW.</p>
+                <span class="host">midimemos.com</span>
+              </div>
+            </div>
           </a>
-          <div class="app soon">
-            <h2>PianoCam</h2>
-            <p>Virtual webcam with an 88-key piano overlay driven by MIDI — for teaching on Zoom/Meet.</p>
-            <span class="host">Coming soon</span>
-          </div>
-          <div class="app soon">
-            <h2>Practica</h2>
-            <p>Practice journal — records playing, segments into takes, clusters them by piece.</p>
-            <span class="host">Coming soon</span>
-          </div>
-          <div class="app soon">
-            <h2>Stave</h2>
-            <p>Music-literacy trainer — drills notes, intervals, harmony and rhythm from your own scores.</p>
-            <span class="host">Coming soon</span>
-          </div>
+        </div>
+
+        <h3 class="subhead">Coming soon</h3>
+        <div class="minis">
+          <div class="mini"><img class="ic" src="./assets/ic-bentfm.png" alt="" /><h4>bent.fm</h4><span class="soon">Soon</span></div>
+          <div class="mini"><img class="ic" src="./assets/ic-pianocam.png" alt="" /><h4>PianoCam</h4><span class="soon">Soon</span></div>
+          <div class="mini"><img class="ic" src="./assets/ic-practica.png" alt="" /><h4>Practica</h4><span class="soon">Soon</span></div>
+          <div class="mini"><img class="ic" src="./assets/ic-stave.png" alt="" /><h4>Stave</h4><span class="soon">Soon</span></div>
         </div>
       </section>
 
@@ -195,9 +231,7 @@
 
       <section id="links">
         <h2 class="sec">Elsewhere</h2>
-        <p class="lede" style="margin-bottom:1.25rem">
-          My art lives on Instagram and my music on SoundCloud.
-        </p>
+        <p class="sublede">My art lives on Instagram and my music on SoundCloud.</p>
         <div class="linkrow">
           <a href="https://www.instagram.com/e7mac/">Instagram — art</a>
           <a href="https://soundcloud.com/e7mac">SoundCloud — music</a>
