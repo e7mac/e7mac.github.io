@@ -1,0 +1,9 @@
+{
+  "name": "e7mac",
+  "compatibility_date": "2025-05-01",
+  "assets": {
+    "directory": "./",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
