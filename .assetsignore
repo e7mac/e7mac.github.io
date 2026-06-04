@@ -4,3 +4,4 @@
 .assetsignore
 wrangler.jsonc
 docs
+worker.js
