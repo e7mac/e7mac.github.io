@@ -76,6 +76,9 @@
       .app h2 { font-family: var(--serif); font-size: 1.15rem; margin: 0 0 0.25rem; }
       .app p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
       .app .host { color: var(--clay); font-weight: 600; font-size: 0.82rem; margin-top: 0.5rem; display: inline-block; }
+      .app.soon { cursor: default; }
+      .app.soon:hover { border-color: var(--faint); transform: none; }
+      .app.soon .host { color: var(--muted); }
       .linkrow { display: flex; flex-wrap: wrap; gap: 0.6rem; }
       .linkrow a {
         text-decoration: none; color: var(--ink);
@@ -149,11 +152,11 @@
           Apps and instruments I build for musicians.
         </p>
         <div class="apps">
-          <a class="app" href="https://apps.apple.com/us/developer/mayank-sanganeria/id527550366">
+          <div class="app soon">
             <h2>bent.fm</h2>
             <p>A circuit-bent FM synthesiser for iPad — chaotic, playable, AUv3.</p>
-            <span class="host">App Store</span>
-          </a>
+            <span class="host">Coming soon</span>
+          </div>
           <a class="app" href="https://grainproc.com">
             <h2>GrainProc</h2>
             <p>Live granular processor — mic input through a granular delay/feedback engine.</p>
@@ -164,21 +167,21 @@
             <p>One-tap MIDI recorder — capture an idea, play it back, export the .mid to any DAW.</p>
             <span class="host">midimemos.com</span>
           </a>
-          <a class="app" href="https://apps.apple.com/us/developer/mayank-sanganeria/id527550366">
+          <div class="app soon">
             <h2>PianoCam</h2>
             <p>Virtual webcam with an 88-key piano overlay driven by MIDI — for teaching on Zoom/Meet.</p>
-            <span class="host">App Store</span>
-          </a>
-          <a class="app" href="https://apps.apple.com/us/developer/mayank-sanganeria/id527550366">
+            <span class="host">Coming soon</span>
+          </div>
+          <div class="app soon">
             <h2>Practica</h2>
             <p>Practice journal — records playing, segments into takes, clusters them by piece.</p>
-            <span class="host">App Store</span>
-          </a>
-          <a class="app" href="https://apps.apple.com/us/developer/mayank-sanganeria/id527550366">
+            <span class="host">Coming soon</span>
+          </div>
+          <div class="app soon">
             <h2>Stave</h2>
             <p>Music-literacy trainer — drills notes, intervals, harmony and rhythm from your own scores.</p>
-            <span class="host">App Store</span>
-          </a>
+            <span class="host">Coming soon</span>
+          </div>
         </div>
       </section>
 
