@@ -1,0 +1,33 @@
+# Mayank Sanganeria (e7mac)
+
+> Personal site of Mayank Sanganeria, an engineer and computer musician based in San Francisco who studied at CCRMA, Stanford. It collects the music software he builds (free browser-based practice tools and iOS/macOS apps), his publications, and links to his art and music.
+
+The site is a single page. Contact: hello@e7mac.com.
+
+## Main pages
+
+- [Mayank Sanganeria — engineer & computer musician](https://e7mac.com/): Music software, apps, and free browser tools for musicians.
+
+## Sections of the home page
+
+- [Music tools](https://e7mac.com/#tools): Free, browser-based tools — to make practising and studying music a little easier.
+- [Software](https://e7mac.com/#software): Apps and instruments I build for musicians.
+- [Publications](https://e7mac.com/#publications)
+- [Elsewhere](https://e7mac.com/#links): My art lives on Instagram and my music on SoundCloud.
+
+## Related
+
+Music apps and tools he builds:
+
+- [Real Ear Trainer](https://realeartrainer.com/): free online ear training — intervals, chords, scales and progressions, with lessons and scaffolded drills.
+- [Real Sight Reader](https://realsightreader.com/): free sight-reading practice on real piano music, with on-screen keys or a MIDI keyboard; no account.
+- [RealMusicTheory](https://realmusictheory.com/): free, open music-theory textbook whose harmony examples come from real repertoire by composers you choose.
+- [Music Ed textbook examples](https://textbook.realmusictheory.com/): playable examples from classic public-domain music-theory and orchestration textbooks.
+- [Playable Books](https://playablebook.com/): classic music textbooks (Fux, Rameau, Rimsky-Korsakov, Schoenberg and others) in reading editions whose examples play in the browser, beside the original scans where available.
+- [Jazz Changes](https://jazzchanges.app/): learn jazz standards by ear — essential recordings in listening order, what to listen for, and the chord changes.
+- [Music Tutor](https://musictutor.app/): MCP connector that gives Claude and ChatGPT playable notation, chords, harmony examples, sight-reading and ear-training tools.
+- [Whozart](https://whozart.com/): a classical-music listening quiz — hear a piece, name it, share the score.
+- [MIDI Memos](https://midimemos.com/): one-tap MIDI recorder for iPhone and iPad that exports .mid files to any DAW.
+- [PianoCam](https://pianocam.app/): iPhone studio that turns piano videos into shareable performances with falling notes and sheet music.
+- [RealJam](https://realjam.app/): jam over real chord changes in the browser with guided ladders for melody, harmony and time; no signup.
+- [GrainProc](https://grainproc.com/): live granular processor for iPhone and iPad — real-time granular delay and feedback, playable as an instrument.
